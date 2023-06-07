@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\ShoppingListController;
 
@@ -18,7 +19,7 @@ use App\Http\Controllers\ShoppingListController;
 
 Route::get('/', [AuthController::class, 'index']);
 
-
+Route::get('/user/register', [UserController::class, 'index']);
 /*
 
 // 会員登録
