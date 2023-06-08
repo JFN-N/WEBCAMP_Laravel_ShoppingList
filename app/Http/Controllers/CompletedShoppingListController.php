@@ -8,6 +8,6 @@ class CompletedShoppingListController extends Controller
 {
     public function index()
     {
-        return view('/completed_shopping_list/list');
+        return view('completed_shopping_list.list');
     }
 }
