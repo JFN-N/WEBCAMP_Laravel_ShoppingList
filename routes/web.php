@@ -39,4 +39,8 @@ Route::get('/', function () {
 });
 
 */
+// 購入済み「買うもの」一覧
+    Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'list']);
+    // ログアウト
+    Route::get('/logout', [AuthController::class, 'logout']);
 
