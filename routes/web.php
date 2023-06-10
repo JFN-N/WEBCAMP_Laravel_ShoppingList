@@ -32,7 +32,11 @@ Route::prefix('/user')->group(function () {
 
 */
 
-Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
+// 認可処理
+Route::middleware(['auth'])->group(function () {
+    Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
+    Route::get('/logout', [AuthController::class, 'logout']);
+});
 
 /*
 

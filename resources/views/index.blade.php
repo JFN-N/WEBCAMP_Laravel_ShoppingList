@@ -12,6 +12,7 @@
             </div>
         @endif
         <form action="/login" method="post">
+            @csrf
             email：<input><br>
             パスワード：<input type="password"><br>
             <button>ログインする</button>
