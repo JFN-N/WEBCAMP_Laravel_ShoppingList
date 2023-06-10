@@ -13,10 +13,7 @@ class CreateCompletedShoppingListsTable extends Migration
      */
     public function up()
     {
-        Schema::create('completed_shopping_lists', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+
     }
 
     /**

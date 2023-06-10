@@ -13,8 +13,8 @@
         @endif
         <form action="/login" method="post">
             @csrf
-            email：<input><br>
-            パスワード：<input type="password"><br>
+            email：<input name="email"><br>
+            パスワード：<input name="password" type="password"><br>
             <button>ログインする</button>
         </form>
 
