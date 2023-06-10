@@ -18,7 +18,8 @@ use App\Http\Controllers\CompletedShoppingListController;
 |
 */
 
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', [AuthController::class, 'index'])->name('front.index');
+Route::post('/login', [AuthController::class, 'login']);
 
 Route::get('/user/register', [UserController::class, 'index']);
 /*

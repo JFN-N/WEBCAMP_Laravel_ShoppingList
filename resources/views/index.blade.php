@@ -11,7 +11,7 @@
             @endforeach
             </div>
         @endif
-        <form action="./top.html" method="post">
+        <form action="/login" method="post">
             email：<input><br>
             パスワード：<input type="password"><br>
             <button>ログインする</button>
