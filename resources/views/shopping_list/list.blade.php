@@ -20,18 +20,7 @@
             </form>
 
         <h1>「買うもの」一覧</h1>
-        <!--
-
-        @foreach ($list as $task)
-        <tr>
-            <td>{{ $task->name }}
-            <td>{{ $task->period }}
-            <td><form action="./top.html"><button>削除</button></form></a>
-            <td></a>
-            <td><form action="./top.html"><button>完了</button></form>
-        @endforeach
-
-        -->
+        <!--　-->
 
         <!-- ページネーション -->
         現在 1 ページ目<br>
