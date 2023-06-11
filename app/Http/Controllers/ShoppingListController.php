@@ -52,7 +52,7 @@ class ShoppingListController extends Controller
         }
 
         // 一覧に遷移する
-        return redirect('/task/list');
+        return redirect('shopping_list.list');
     }
 
     /**
@@ -100,7 +100,7 @@ class ShoppingListController extends Controller
         }
 
         // 一覧に遷移する
-        return redirect('/task/list');
+        return redirect('shopping_list.list');
     }
 
     public function list()

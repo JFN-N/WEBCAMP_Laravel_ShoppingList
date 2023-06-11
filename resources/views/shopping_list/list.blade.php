@@ -13,7 +13,7 @@
                 @endforeach
                 </div>
             @endif
-            <form action="/register" method="post">
+            <form action="/shopping_list/list" method="post">
                 @csrf
                 「買うもの」名:<input name="name" value="{{ old('name') }}"><br>
                 <button>「買うもの」を登録する</button>
