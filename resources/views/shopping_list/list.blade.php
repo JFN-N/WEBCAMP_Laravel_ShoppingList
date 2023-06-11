@@ -22,10 +22,10 @@
         <h1>「買うもの」一覧</h1>
         <!--　-->
 
-        @foreach ($list as $shopping_lists)
+        @foreach ($list as $Shopping_lists)
         <tr>
-            <td>{{ $shopping_lists->created_at }}
-            <td>{{ $tshopping_lists->name }}
+            <td>{{ $Shopping_lists->created_at }}
+            <td>{{ $Shopping_lists->name }}
             <td><form action="./top.html"><button>削除</button></form></a>
             <td></a>
             <td><form action="./top.html"><button>完了</button></form>
