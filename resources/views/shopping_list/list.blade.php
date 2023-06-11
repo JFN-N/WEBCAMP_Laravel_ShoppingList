@@ -22,9 +22,18 @@
         <h1>「買うもの」一覧</h1>
         <!--　-->
 
+        @foreach ($list as $shopping_lists)
+        <tr>
+            <td>{{ $tshopping_lists->name }}
+            <td>{{ $shopping_lists->period }}
+            <td><form action="./top.html"><button>削除</button></form></a>
+            <td></a>
+            <td><form action="./top.html"><button>完了</button></form>
+        @endforeach
+
         <!-- ページネーション -->
         現在 1 ページ目<br>
-        <a href="./top.html">最初のページ</a> /
+        <a href="./top.html">最初のページ(未実装)</a> /
         <a href="./top.html">前に戻る</a> /
         <a href="./top.html">次に進む</a>
         <br>

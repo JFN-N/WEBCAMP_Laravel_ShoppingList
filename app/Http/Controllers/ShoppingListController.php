@@ -43,7 +43,7 @@ class ShoppingListController extends Controller
     public function delete(Request $request, $task_id)
     {
         // task_idのレコードを取得する
-        $task = $this->getTaskModel($task_id);
+        $task = $this->getShopping_listsModel($task_id);
 
         // タスクを削除する
         if ($task !== null) {
@@ -66,7 +66,7 @@ class ShoppingListController extends Controller
             DB::beginTransaction();
 
             // task_idのレコードを取得する
-            $task = $this->getTaskModel($task_id);
+            $task = $this->Shopping_listsModel($task_id);
             if ($task === null) {
                 // task_idが不正なのでトランザクション終了
                 throw new \Exception('');
@@ -105,6 +105,10 @@ class ShoppingListController extends Controller
 
     public function list()
     {
-        return view('/shopping_list/list');
+        // 一覧の取得
+        $list = Shopping_listsModel::get();
+        $sql = Shopping_listsModel::toSql();
+        echo "<pre>\n"; var_dump($sql, $list); exit;
+        return view('shopping_list.list');
     }
 }
