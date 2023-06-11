@@ -7,6 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ShoppingListController;
 use App\Http\Controllers\CompletedShoppingListController;
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,13 +52,24 @@ Route::middleware(['auth'])->group(function () {
         //Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
         //Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
 
-/*
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-*/
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+// 管理画面
+Route::prefix('/admin')->group(function () {
+    Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
+    Route::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
+    // 認可処理
+    //Route::middleware(['auth:admin'])->group(function () {
+       Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+        //Route::get('/user/list', [AdminUserController::class, 'list'])->name('admin.user.list');
+    });
+
+
+
 // 購入済み「買うもの」一覧
     //Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'index']);
     // ログアウト
