@@ -24,8 +24,8 @@
 
         @foreach ($list as $shopping_lists)
         <tr>
+            <td>{{ $shopping_lists->created_at }}
             <td>{{ $tshopping_lists->name }}
-            <td>{{ $shopping_lists->period }}
             <td><form action="./top.html"><button>削除</button></form></a>
             <td></a>
             <td><form action="./top.html"><button>完了</button></form>
