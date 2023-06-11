@@ -34,7 +34,7 @@
         <tr>
             <td>{{ $Shopping_lists->created_at }}
             <td>{{ $Shopping_lists->name }}
-            <td><form action="{{ route('delete', ['shopping_list_id' => $shopping_lists->id]) }}" method="post">
+            <td><form action="{{ route('delete', ['Shopping_list_id' => $Shopping_lists->id]) }}" method="post">
                     @csrf
                     @method("DELETE")
                     <button onclick='return confirm("この「買うもの」を削除します。よろしいですか？");'>削除</button>
