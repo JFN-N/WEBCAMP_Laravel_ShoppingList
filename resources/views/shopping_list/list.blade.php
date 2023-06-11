@@ -13,7 +13,7 @@
                 @endforeach
                 </div>
             @endif
-            <form action="/task/register" method="post">
+            <form action="/register" method="post">
                 @csrf
                 「買うもの」名:<input name="name" value="{{ old('name') }}"><br>
                 <button>「買うもの」を登録する</button>
@@ -21,7 +21,11 @@
 
         <h1>「買うもの」一覧</h1>
         <!--　-->
-
+        <a href="/completed_shopping_list/list">購入済み「買うもの」一覧</a><br>
+        <table border="1">
+        <tr>
+            <th>登録日
+            <th>「買うもの」名
         @foreach ($list as $Shopping_lists)
         <tr>
             <td>{{ $Shopping_lists->created_at }}
@@ -30,6 +34,7 @@
             <td></a>
             <td><form action="./top.html"><button>完了</button></form>
         @endforeach
+        </table>
 
         <!-- ページネーション -->
         現在 1 ページ目<br>

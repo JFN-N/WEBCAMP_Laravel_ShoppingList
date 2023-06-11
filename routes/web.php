@@ -34,9 +34,21 @@ Route::prefix('/user')->group(function () {
 
 // 認可処理
 Route::middleware(['auth'])->group(function () {
-    Route::get('/shopping_list/list', [ShoppingListController::class, 'list']);
+    Route::prefix('/shopping_list')->group(function () {
+        Route::get('/list', [ShoppingListController::class, 'list'])->name('front.list');
+        Route::post('/register', [ShoppingListController::class, 'register']);
+        //Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
+        //Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
+    });
+    // 購入済み「買うもの」一覧
+    Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'index']);
+    // ログアウト
     Route::get('/logout', [AuthController::class, 'logout']);
 });
+
+
+        //Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
+        //Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
 
 /*
 
@@ -46,7 +58,7 @@ Route::get('/', function () {
 
 */
 // 購入済み「買うもの」一覧
-    Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'index']);
+    //Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'index']);
     // ログアウト
     Route::get('/logout', [AuthController::class, 'logout']);
 

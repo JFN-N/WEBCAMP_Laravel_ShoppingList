@@ -109,6 +109,6 @@ class ShoppingListController extends Controller
         $list = Shopping_listsModel::get();
         $sql = Shopping_listsModel::toSql();
         //echo "<pre>\n"; var_dump($sql, $list); exit;
-        return view('shopping_list.list');
+        return view('shopping_list.list', ['list' => $list]);
     }
 }
