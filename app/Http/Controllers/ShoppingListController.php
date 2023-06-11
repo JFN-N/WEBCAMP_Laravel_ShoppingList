@@ -43,14 +43,14 @@ class ShoppingListController extends Controller
     /**
      * 削除処理
      */
-    public function delete(Request $request, $task_id)
+    public function delete(Request $request, $shopping_list_id)
     {
         // task_idのレコードを取得する
-        $task = $this->getShopping_listsModel($task_id);
+        $shopping_lists = $this->getShopping_listsModel(shopping_list_id);
 
         // タスクを削除する
-        if ($task !== null) {
-            $task->delete();
+        if ($shopping_lists !== null) {
+            $shopping_lists->delete();
             $request->session()->flash('front.task_delete_success', true);
         }
 
@@ -108,12 +108,15 @@ class ShoppingListController extends Controller
 
     public function list()
     {
-        // 一覧の取得
-        $list = Shopping_listsModel::get();
-        $sql = Shopping_listsModel::toSql();
 
         // 1Page辺りの表示アイテム数を設定
         $per_page = 3;
+
+        // 一覧の取得
+        $list = Shopping_listsModel::where('user_id', Auth::id())
+                         ->orderBy('created_at','DESC')
+                         ->orderBy('name')
+                         ->paginate($per_page);
 
         //echo "<pre>\n"; var_dump($sql, $list); exit;
         return view('shopping_list.list', ['list' => $list]);
