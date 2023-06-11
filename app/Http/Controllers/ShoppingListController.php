@@ -3,7 +3,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Shopping_lists as Shopping_listsModel;
+use App\Models\shopping_lists as Shopping_listsModel;
 
 class ShoppingListController extends Controller
 {
