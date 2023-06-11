@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\shopping_lists as Shopping_listsModel;
 
+use App\Http\Requests\TaskRegisterPostRequest;
+use Illuminate\Support\Facades\Auth;
+
 class ShoppingListController extends Controller
 {
 
@@ -12,11 +15,11 @@ class ShoppingListController extends Controller
     public function register(TaskRegisterPostRequest $request)
     {
         // validate済みのデータの取得
-        //$datum = $request->validated();
+        $datum = $request->validated();
         //
-        $user = Auth::user();
-        $id = Auth::id();
-        var_dump($datum, $user, $id); exit;
+        //$user = Auth::user();
+        //$id = Auth::id();
+        //var_dump($datum, $user, $id); exit;
 
         // user_id の追加
         $datum['user_id'] = Auth::id();
@@ -108,6 +111,10 @@ class ShoppingListController extends Controller
         // 一覧の取得
         $list = Shopping_listsModel::get();
         $sql = Shopping_listsModel::toSql();
+
+        // 1Page辺りの表示アイテム数を設定
+        $per_page = 3;
+
         //echo "<pre>\n"; var_dump($sql, $list); exit;
         return view('shopping_list.list', ['list' => $list]);
     }
