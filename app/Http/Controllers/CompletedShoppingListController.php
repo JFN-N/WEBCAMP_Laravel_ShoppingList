@@ -6,56 +6,36 @@ use App\Http\Controllers\Controller;
 
 class CompletedShoppingListController extends Controller
 {
-    public function index()
+    /**
+     * 一覧用の Illuminate\Database\Eloquent\Builder インスタンスの取得
+     */
+    protected function getListBuilder()
     {
-        return view('completed_shopping_list.list');
+        return CompletedTaskModel::where('user_id', Auth::id())
+                     ->orderBy('name', 'DESC')
+                     ->orderBy('updated_at');
     }
 
     /**
-     * タスクの完了
+     * タスク一覧ページ を表示する
+     *
+     * @return \Illuminate\View\View
      */
-    public function complete(Request $request, $task_id)
+    public function list()
     {
-        /* タスクを完了テーブルに移動させる */
-        try {
-            // トランザクション開始
-            DB::beginTransaction();
+        // 1Page辺りの表示アイテム数を設定
+        $per_page = 10;
 
-            // task_idのレコードを取得する
-            $task = $this->getTaskModel($task_id);
-            if ($task === null) {
-                // task_idが不正なのでトランザクション終了
-                throw new \Exception('');
-            }
-
-            // tasks側を削除する
-            $task->delete();
-//var_dump($task->toArray()); exit;
-
-            // completed_tasks側にinsertする
-            $dask_datum = $task->toArray();
-            unset($dask_datum['created_at']);
-            unset($dask_datum['updated_at']);
-            $r = CompletedTaskModel::create($dask_datum);
-            if ($r === null) {
-                // insertで失敗したのでトランザクション終了
-                throw new \Exception('');
-            }
-//echo '処理成功'; exit;
-
-            // トランザクション終了
-            DB::commit();
-            // 完了メッセージ出力
-            $request->session()->flash('front.task_completed_success', true);
-        } catch(\Throwable $e) {
-//var_dump($e->getMessage()); exit;
-            // トランザクション異常終了
-            DB::rollBack();
-            // 完了失敗メッセージ出力
-            $request->session()->flash('front.task_completed_failure', true);
-        }
-
-        // 一覧に遷移する
-        return redirect('/task/list');
+        // 一覧の取得
+        $list = $this->getListBuilder()
+                     ->paginate($per_page);
+/*
+$sql = $this->getListBuilder()
+            ->toSql();
+//echo "<pre>\n"; var_dump($sql, $list); exit;
+var_dump($sql);
+*/
+        //
+        return view('completed_shopping_list.list', ['list' => $list]);
     }
 }
