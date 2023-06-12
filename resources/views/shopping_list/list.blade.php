@@ -9,6 +9,9 @@
             @if (session('front.task_delete_success') == true)
                 「買うもの」を削除しました！！<br>
             @endif
+            @if (session('front.task_completed_success') == true)
+                「買うもの」を完了にしました！！<br>
+            @endif
 
             @if ($errors->any())
                 <div>
