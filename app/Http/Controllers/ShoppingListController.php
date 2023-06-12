@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\shopping_lists as Shopping_listsModel;
+use App\Models\completed_shopping_lists as completed_shopping_listsModel;
 
 use App\Http\Requests\TaskRegisterPostRequest;
 use Illuminate\Support\Facades\Auth;
@@ -61,7 +62,7 @@ class ShoppingListController extends Controller
     /**
      * タスクの完了
      */
-    public function complete(Request $request, $task_id)
+    public function complete(Request $request, $shopping_list_id)
     {
         /* タスクを完了テーブルに移動させる */
         try {
@@ -69,21 +70,21 @@ class ShoppingListController extends Controller
             DB::beginTransaction();
 
             // task_idのレコードを取得する
-            $task = $this->Shopping_listsModel($task_id);
-            if ($task === null) {
+            $Shopping_lists = $this->Shopping_listsModel($shopping_list_id);
+            if ($Shopping_lists === null) {
                 // task_idが不正なのでトランザクション終了
                 throw new \Exception('');
             }
 
             // tasks側を削除する
-            $task->delete();
+            $Shopping_lists->delete();
 //var_dump($task->toArray()); exit;
 
             // completed_tasks側にinsertする
-            $dask_datum = $task->toArray();
+            $dask_datum = $Shopping_lists->toArray();
             unset($dask_datum['created_at']);
             unset($dask_datum['updated_at']);
-            $r = CompletedTaskModel::create($dask_datum);
+            $r = completed_shopping_listsModel::create($dask_datum);
             if ($r === null) {
                 // insertで失敗したのでトランザクション終了
                 throw new \Exception('');
