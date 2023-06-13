@@ -9,6 +9,9 @@ use App\Http\Controllers\CompletedShoppingListController;
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,16 +50,6 @@ Route::middleware(['auth'])->group(function () {
     // ログアウト
     Route::get('/logout', [AuthController::class, 'logout']);
 });
-
-
-        //Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
-        //Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
-
-
-
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 // 管理画面
 Route::prefix('/admin')->group(function () {

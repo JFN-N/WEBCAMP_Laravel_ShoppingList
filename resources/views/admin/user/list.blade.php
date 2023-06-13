@@ -14,6 +14,12 @@
             <th>ユーザー名
             <th>購入した「買うもの」数
         </tr>
+        @foreach ($users as $user)
+        <tr>
+            <td>{{ $user->id }}
+            <td>{{ $user->name }}
+            <td>{{ $user->completed_shopping_lists_num }}
+        @endforeach
     </table>
 
 @endsection
