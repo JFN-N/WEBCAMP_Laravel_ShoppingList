@@ -3,6 +3,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\completed_shopping_lists as CompletedShippingModel;
 
 class CompletedShoppingListController extends Controller
 {
@@ -11,7 +12,7 @@ class CompletedShoppingListController extends Controller
      */
     protected function getListBuilder()
     {
-        return CompletedTaskModel::where('user_id', Auth::id())
+        return CompletedShippingModel::where('user_id', Auth::id())
                      ->orderBy('name', 'DESC')
                      ->orderBy('updated_at');
     }
