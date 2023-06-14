@@ -30,7 +30,6 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::prefix('/user')->group(function () {
     Route::get('/register', [UserController::class, 'index'])->name('front.user.register');
     Route::post('/register', [UserController::class, 'register']);
-    Route::get('/login', [AuthController::class, 'index']);
 });
 
 
@@ -40,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/list', [ShoppingListController::class, 'list'])->name('front.list');
         Route::post('/register', [ShoppingListController::class, 'register']);
         Route::delete('/delete/{shopping_list_id}', [ShoppingListController::class, 'delete'])->whereNumber('shopping_list_id')->name('delete');
-        //Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
+        Route::post('/complete/{shopping_list_id}', [ShoppingListController::class, 'complete'])->whereNumber('shopping_list_id')->name('complete');
     });
     // 購入済み「買うもの」一覧
     Route::get('/completed_shopping_list/list', [CompletedShoppingListController::class, 'index']);
