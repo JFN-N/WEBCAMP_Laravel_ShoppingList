@@ -39,7 +39,7 @@ class UserController extends Controller
         $request->session()->flash('front.user_register_success', true);
 
 
-        //return redirect('/login');
-        return view('index');
+        return redirect('/login');
+        //return view('index');
     }
 }
