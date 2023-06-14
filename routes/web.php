@@ -26,13 +26,10 @@ use App\Http\Controllers\Admin\UserController as AdminUserController;
 Route::get('/', [AuthController::class, 'index'])->name('front.index');
 Route::post('/login', [AuthController::class, 'login']);
 
-Route::get('/user/register', [UserController::class, 'index']);
-
-
 // 会員登録
 Route::prefix('/user')->group(function () {
     Route::get('/register', [UserController::class, 'index'])->name('front.user.register');
-    Route::post('/register', [UserController::class, 'register'])->name('front.user.register.post');
+    Route::post('/register', [UserController::class, 'register']);
 });
 
 // 認可処理
