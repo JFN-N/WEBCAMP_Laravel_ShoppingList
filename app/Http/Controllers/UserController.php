@@ -31,8 +31,8 @@ class UserController extends Controller
             //var_dump($r); exit;
         } catch(\Throwable $e) {
             // XXX 本当はログに書く等の処理をする。今回は一端「出力する」だけ
-            //echo $e->getMessage();
-            //exit;
+            echo $e->getMessage();
+            exit;
         }
 
         // タスク登録成功
