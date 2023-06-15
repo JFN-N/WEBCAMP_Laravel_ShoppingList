@@ -19,9 +19,12 @@ class UserController extends Controller
     public function register(UserRegisterPost $request)
     {
         // validate済みのデータの取得
-        $datum = $request->validate([
-            'password' =>['required','confirmed']
-        ]);
+        //$datum = $request->validate([
+           // 'password' =>['required','confirmed']
+        //]);
+
+        // validate済みのデータの取得
+        $datum = $request->validated();
 
         $datum['password'] = Hash::make($datum['password']);
 
