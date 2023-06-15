@@ -20,7 +20,7 @@ class UserController extends Controller
     {
         // validate済みのデータの取得
         //$datum = $request->validate([
-           // 'password' =>['required','confirmed']
+            //'password' =>['required','confirmed']
         //]);
 
         // validate済みのデータの取得
