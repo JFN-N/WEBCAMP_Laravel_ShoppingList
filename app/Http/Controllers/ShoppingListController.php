@@ -50,7 +50,7 @@ class ShoppingListController extends Controller
     public function delete(Request $request, $shopping_list_id)
     {
         // task_idのレコードを取得する
-        $Shopping_lists = $this->getShopping_listsModel(shopping_list_id);
+        $Shopping_lists = $this->getShopping_listsModel($shopping_list_id);
 
         // タスクを削除する
         if ($Shopping_lists !== null) {
