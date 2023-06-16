@@ -2,6 +2,8 @@
 declare(strict_types=1);
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
 use App\Http\Controllers\Controller;
 use App\Models\completed_shopping_lists as CompletedShippingModel;
 
