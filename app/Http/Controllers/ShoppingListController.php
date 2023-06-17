@@ -109,7 +109,7 @@ class ShoppingListController extends Controller
             DB::beginTransaction();
 
             // task_idのレコードを取得する
-            $Shopping_lists = $this->Shopping_listsModel($shopping_list_id);
+            $Shopping_lists = $this->getShopping_listsModel($shopping_list_id);
             if ($Shopping_lists === null) {
                 // task_idが不正なのでトランザクション終了
                 throw new \Exception('');
@@ -117,7 +117,7 @@ class ShoppingListController extends Controller
 
             // tasks側を削除する
             $Shopping_lists->delete();
-var_dump($Shopping_lists->toArray()); exit;
+//var_dump($Shopping_lists->toArray()); exit;
 
             // completed_tasks側にinsertする
             $dask_datum = $Shopping_lists->toArray();
@@ -128,7 +128,7 @@ var_dump($Shopping_lists->toArray()); exit;
                 // insertで失敗したのでトランザクション終了
                 throw new \Exception('');
             }
-echo '処理成功'; exit;
+//echo '処理成功'; exit;
 
             // トランザクション終了
             DB::commit();
