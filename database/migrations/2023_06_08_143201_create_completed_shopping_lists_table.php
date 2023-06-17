@@ -19,7 +19,7 @@ class CreateCompletedShoppingListsTable extends Migration
             $table->unsignedBigInteger('user_id')->comment('任意のコメント');
             $table->foreign('user_id')->references('id')->on('users'); // 外部キー制約
             //$table->timestamps();
-            $table->dateTime('created_at')->useCurrent()->comment('タスク完了日時');
+            $table->dateTime('created_at')->useCurrent();
             $table->dateTime('updated_at')->useCurrent()->useCurrentOnUpdate();
             //
             $table->primary('id');
