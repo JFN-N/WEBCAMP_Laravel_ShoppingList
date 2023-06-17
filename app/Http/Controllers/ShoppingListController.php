@@ -95,7 +95,7 @@ class ShoppingListController extends Controller
         }
 
         // 一覧に遷移する
-        return redirect('shopping_list.list');
+        return redirect('shopping_list/list');
     }
 
     /**
@@ -123,7 +123,7 @@ class ShoppingListController extends Controller
             $dask_datum = $Shopping_lists->toArray();
             unset($dask_datum['created_at']);
             unset($dask_datum['updated_at']);
-            $r = completed_shopping_listsModel::create($dask_datum);
+            $r = Completed_shopping_listsModel::create($dask_datum);
             if ($r === null) {
                 // insertで失敗したのでトランザクション終了
                 throw new \Exception('');
@@ -143,7 +143,7 @@ class ShoppingListController extends Controller
         }
 
         // 一覧に遷移する
-        return redirect('shopping_list.list');
+        return redirect('shopping_list/list');
     }
 
 }

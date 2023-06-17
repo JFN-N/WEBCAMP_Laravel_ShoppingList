@@ -2,10 +2,10 @@
 declare(strict_types=1);
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\completed_shopping_lists as CompletedShippingModel;
+use App\Models\completed_shopping_lists as Completed_shopping_listsModel;
 
 class CompletedShoppingListController extends Controller
 {
@@ -14,7 +14,7 @@ class CompletedShoppingListController extends Controller
      */
     protected function getListBuilder()
     {
-        return CompletedShippingModel::where('user_id', Auth::id())
+        return Completed_shopping_listsModel::where('user_id', Auth::id())
                      ->orderBy('name', 'DESC')
                      ->orderBy('updated_at');
     }
