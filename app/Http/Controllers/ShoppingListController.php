@@ -16,6 +16,13 @@ class ShoppingListController extends Controller
 {
 
 
+    protected function getListBuilder()
+    {
+        return Shopping_listsModel::where('user_id', Auth::id())
+                     ->orderBy('name', 'DESC')
+                     ->orderBy('created_at');
+    }
+
     public function register(TaskRegisterPostRequest $request)
     {
         // validate済みのデータの取得
