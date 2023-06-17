@@ -65,6 +65,21 @@ class ShoppingListController extends Controller
         return redirect('shopping_list/list');
     }
 
+    protected function getShopping_listsModel($shopping_list_id)
+    {
+        // task_idのレコードを取得する
+        $Shopping_lists = Shopping_listsModel::find($shopping_list_id);
+        if ($Shopping_lists === null) {
+            return null;
+        }
+        // 本人以外のタスクならNGとする
+        if ($Shopping_lists->user_id !== Auth::id()) {
+            return null;
+        }
+        //
+        return $Shopping_lists;
+    }
+
     /**
      * 削除処理
      */
