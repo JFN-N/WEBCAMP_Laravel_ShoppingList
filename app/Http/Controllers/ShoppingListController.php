@@ -23,6 +23,20 @@ class ShoppingListController extends Controller
                      ->orderBy('created_at');
     }
 
+    public function list()
+    {
+
+        // 1Page辺りの表示アイテム数を設定
+        $per_page = 3;
+
+        // 一覧の取得
+        $list = $this->getListBuilder()
+                     ->paginate($per_page);
+
+        //echo "<pre>\n"; var_dump($sql, $list); exit;
+        return view('shopping_list.list', ['list' => $list]);
+    }
+
     public function register(TaskRegisterPostRequest $request)
     {
         // validate済みのデータの取得
@@ -117,19 +131,4 @@ class ShoppingListController extends Controller
         return redirect('shopping_list.list');
     }
 
-    public function list()
-    {
-
-        // 1Page辺りの表示アイテム数を設定
-        $per_page = 3;
-
-        // 一覧の取得
-        $list = Shopping_listsModel::where('user_id', Auth::id())
-                         ->orderBy('created_at','DESC')
-                         ->orderBy('name')
-                         ->paginate($per_page);
-
-        //echo "<pre>\n"; var_dump($sql, $list); exit;
-        return view('shopping_list.list', ['list' => $list]);
-    }
 }
