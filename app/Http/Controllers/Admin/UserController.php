@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function list()
     {
-        $group_by_column = ['users.id', 'completed_shopping_lists.name'];
+        $group_by_column = ['users.id', 'users.name'];
         $list = completed_shopping_listsModel::select($group_by_column)
                          ->selectRaw('count(completed_shopping_lists.id) AS task_num')
                          ->leftJoin('completed_shopping_lists', 'users.id', '=', 'completed_shopping_lists.user_id')

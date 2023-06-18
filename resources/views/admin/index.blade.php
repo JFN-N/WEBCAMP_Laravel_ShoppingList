@@ -11,7 +11,7 @@
             @endforeach
             </div>
         @endif
-        <form action="/login" method="post">
+        <form action="admin/login" method="post">
             @csrf
             ログインID：<input name="login_id" value="{{ old('login_id') }}"><br>
             パスワード：<input name="password" type="password"><br>
