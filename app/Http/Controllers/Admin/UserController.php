@@ -17,11 +17,12 @@ class UserController extends Controller
     {
         $group_by_column = ['users.id', 'users.name'];
         $list = completed_shopping_listsModel::select($group_by_column)
+        //$list = completed_shopping_listsModel::select($group_by_column)
                          ->selectRaw('count(completed_shopping_lists.id) AS task_num')
-                         ->leftJoin('completed_shopping_lists', 'users.id', '=', 'completed_shopping_lists.user_id')
-                         ->groupBy($group_by_column)
-                         ->orderBy('users.id')
-                         ->get();
+        //                 ->leftJoin('completed_shopping_lists', 'users.id', '=', 'completed_shopping_lists.user_id')
+        //                 ->groupBy($group_by_column)
+        //                 ->orderBy('users.id');
+                        ->get();
 //echo "<pre>\n";
 //var_dump($list->toArray()); exit;
         return view('admin.user.list', ['users' => $list]);
