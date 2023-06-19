@@ -3,15 +3,15 @@
 @section('contets2')
 
         <h1>完了タスクの一覧</h1>
-        <a href="/task/list">タスク一覧に戻る</a><br>
+        <a href="/shopping_list/list">タスク一覧に戻る</a><br>
         <table border="1">
         <tr>
             <th>「買うもの」名
             <th>購入日
-@foreach ($list as $task)
+@foreach ($list as $Completed_shopping_lists)
         <tr>
-            <td>{{ $task->name }}
-            <td>{{ $task->created_at->format('Y/m/d')}}
+            <td>{{ $Completed_shopping_lists->name }}
+            <td>{{ $Completed_shopping_lists->created_at->format('Y/m/d')}}
 @endforeach
         </table>
         <!-- ページネーション -->
