@@ -1,7 +1,7 @@
-@extends('admin.layout')
+@extends('admin.layout2')
 
 {{-- メインコンテンツ --}}
-@section('admin.contets')
+@section('adminlist.contets')
     <a href="/admin/top">管理画面Top</a><br>
     <a href="/admin/user/list">ユーザー一覧</a><br>
     <a href="/logout">ログアウト</a><br>
