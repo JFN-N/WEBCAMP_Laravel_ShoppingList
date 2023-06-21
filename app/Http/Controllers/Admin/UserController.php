@@ -16,12 +16,13 @@ class UserController extends Controller
     public function list()
     {
         $group_by_column = ['users.id', 'users.name'];
-        $list = completed_shopping_listsModel::select($group_by_column)
+        $list = UserModel::select($group_by_column)
         //$list = completed_shopping_listsModel::select($group_by_column)
                          ->selectRaw('count(completed_shopping_lists.id) AS task_num')
-        //                 ->leftJoin('completed_shopping_lists', 'users.id', '=', 'completed_shopping_lists.user_id')
-        //                 ->groupBy($group_by_column)
-        //                 ->orderBy('users.id');
+                         ->leftJoin('completed_shopping_lists', 'users.id', '=', 'completed_shopping_lists.user_id')
+                         ->groupBy($group_by_column)
+                         ->orderBy('users.id')
+                         ->orderBy('users.name')
                         ->get();
 //echo "<pre>\n";
 //var_dump($list->toArray()); exit;
