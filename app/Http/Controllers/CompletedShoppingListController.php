@@ -15,7 +15,7 @@ class CompletedShoppingListController extends Controller
     protected function getListBuilder()
     {
         return Completed_shopping_listsModel::where('user_id', Auth::id())
-                     ->orderBy('name', 'DESC')
+                     ->orderBy('name', 'ASC')
                      ->orderBy('updated_at');
     }
 
